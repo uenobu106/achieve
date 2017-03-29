@@ -11,6 +11,7 @@ n = 1
 while n <= 100
   Blog.create(
     title: "あああ",
+    content:"111",
     user_id: n
   )
   n = n + 1
