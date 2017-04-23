@@ -12,11 +12,4 @@ class NoticeMailer < ApplicationMailer
          subject: '【Achieve】ブログが投稿されました'
   end
 
-  def sendmail_contact(contact)
-    @contact = contact
-
-    mail to: "uenobu106@ezweb.ne.jp",
-         subject: '【Achieve】お問い合わせが送信されました'
-  end
-
 end
