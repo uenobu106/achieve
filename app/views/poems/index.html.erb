@@ -1,4 +1,6 @@
-<%= @poems.each do |poem| %>
+<% @poems.each do |poem| %>
   <%= poem.title %>
   <%= poem.content %>
 <% end %>
+
+<%= link_to '詳細', poems_path %>
