@@ -1,14 +1,25 @@
-100.times do |n|
-  email = Faker::Internet.email
-  password = "password"
-  User.create!(email: email,
-               password: password,
-               password_confirmation: password,
-               )
+5.times do |n|
+email = Faker::Internet.email
+password = "password"
+User.create!(email: email,
+password: password,
+password_confirmation: password,
+uid: Faker::Code.imei,
+provider: "TWITTER",
+)
 end
 
+# 100.times do |n|
+#   email = Faker::Internet.email
+#   password = "password"
+#   User.create!(email: email,
+#                password: password,
+#                password_confirmation: password,
+#                )
+# end
+#
 n = 1
-while n <= 100
+while n <= 5
   Blog.create(
     title: "あああ",
     content:"111",
