@@ -6,10 +6,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
 
+  <% if user_signed_in? %>
+  <script>
+    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+      cluster: 'ap1',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+      channel.bind('comment_created', function(data) {
+        alert(data.message);
+      });
+      channel.bind('notification_created', function(data) {
+        $('#unread_count').html(data.unread_counts);
+      });
+  </script>
+  <% end %>
 </head>
 <body>
-
 <header>
   <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -25,6 +41,9 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <%= link_to  notifications_index_path, class: "navbar-brand" do %>
+      <i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "お問い合わせ", new_contact_path %></li>
         <li class="dropdown">
