@@ -8,13 +8,13 @@
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
   <%= f.hidden_field :content %>
-
-  <p>name:<%= @contact.name %></p>
-  <p>email:<%= @contact.email %></p>
-  <p>content:<%= @contact.content %></p>
+<br>
+  <h4>name:<%= @contact.name %></h4>
+  <h4>email:<%= @contact.email %></h4>
+  <h4>content:<%= @contact.content %></h4>
   <%= f.submit "送信する" %>
    <% end %>
-
+<br>
   <%= form_for(@contact, url: new_contact_path, method: 'get') do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
