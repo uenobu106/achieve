@@ -6,7 +6,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <span class="glyphicon glyphicon-envelope"></span><%= f.label :メールアドレス %><br/>
+    <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
   </div>
 
